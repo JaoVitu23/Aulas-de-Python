@@ -1,0 +1,39 @@
+'''
+Desenvolva uma lógica que leia o peso e a altura de uma pessoa, calcule seu Índice de Massa Corporal (IMC) e mostre seu status, 
+de acordo com a tabela abaixo:
+
+IMC abaixo de 18,5: Abaixo do Peso
+Entre 18,5 e 25: Peso Ideal
+25 até 30: Sobrepeso
+30 até 40: Obesidade
+Acima de 40: Obesidade Mórbida
+'''
+
+cores = {"limpar":"\033[m", #Lista de cores para utilização
+        "Azul":"\033[34m",
+         "Vermelho":"\033[31m",
+         "Verde":"\033[32m",
+         "Magenta":"\033[35m",
+         "Amarelo":"\033[33m",
+         "Ciano":"\033[36m",
+         "Branco":"\033[30m"}
+
+altura = float(input("Digite sua altura em metros: "))
+peso = float(input("Digite seu peso em kilogramas: "))
+
+imc = peso / (altura * altura) 
+
+if imc < 18.5:
+    print(f"Seu IMC é de {imc:.1f}, você está {cores['Branco']}abaixo do peso{cores['limpar']}.")
+
+elif imc < 25:
+    print(f"Seu IMC é de {imc:.1f}, você está no seu {cores['Verde']}peso ideal{cores['limpar']}.")
+
+elif imc < 30:
+    print(f"Seu IMC é de {imc:.1f}, você está com {cores['Amarelo']}sobrepeso{cores['limpar']}.")
+
+elif imc < 40:
+    print(f"Seu IMC é de {imc:.1f}, você está {cores['Vermelho']}obeso{cores['limpar']}.")
+
+elif imc > 40:
+    print(f"Seu IMC é de {imc:1f}, você tem {cores['Magenta']}obesidade mórbida{cores['limpar']}.")
