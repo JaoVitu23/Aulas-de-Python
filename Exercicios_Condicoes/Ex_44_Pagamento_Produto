@@ -1,0 +1,51 @@
+'''
+Elabore um programa que calcule o valor a ser pago por um produto, considerando o seu preço normal e condição de pagamento:
+à vista dinheiro/cheque: 10% de desconto
+à vista no cartão: 5% de desconto
+em até 2x no cartão: preço formal 
+3x ou mais no cartão: 20% de juros
+'''
+
+from time import sleep
+
+print(f'{" Lojas Casas Da Minha Tia ":=^50}')
+sleep(2)
+produto = float(input("Digite o valor total de sua compra: R$"))
+sleep(2)
+pagamento = int(input("\nQual será a forma de pagamento? \n"
+                      "Digite '1' para PAGAMENTO À VISTA NO DINHEIRO; \n"
+                      "Digite '2' para PAGAMENTO À VISTA NO CARTÃO; \n"
+                      "Digite '3' para PARCELADO EM ATÉ 2X NO CARTÃO; \n"
+                      "Digite '4' para PARCELADO EM ATÉ 3X OU MAIS NO CARTÃO. \n"
+                      "O que deseja? "))
+
+if pagamento == 1:
+    desconto = produto - (produto * 10 / 100)
+    sleep(2)
+    print(f"\nO produto com PAGAMENTO À VISTA, passará de R${produto:.2f}, para R${desconto:.2f}, com 10% de desconto.")
+
+elif pagamento == 2:
+    desconto = produto - (produto * 5 / 100)
+    sleep(2)
+    print(f"\nO produto com PAGAMENTO À VISTA, passará de R${produto:.2f}, para R${desconto:.2f}, com 5% de desconto.")
+
+elif pagamento == 3:
+    sleep(2)
+    print(f"\nO produto com PAGAMENTO EM ATÉ 2X NO CARTÃO, não terá desconto e continuará com o preço de R${produto:.2f}.")
+
+elif pagamento == 4:
+    sleep(2)
+    print("\nA compra poderá ser parcelada em 3x ou mais.")
+    parcelas = int(input("Quantas parcelas a partir de 3x, você gostaria de fazer? "))
+
+    if parcelas > 3:
+        juros = produto + (produto * 20 / 100)
+        cartao = juros / parcelas
+        sleep(2)
+        print(f"\nO produto com PAGAMENTO PARCELADO DE {parcelas}x, terá um juros de 20% a mais do valor do produto,\n"
+              f"Assim, o valor do produto passará de R${produto:.2f}, para R${juros:.2f}. \n"
+              f"O pagamento será feito em {parcelas} parcelas de R${cartao:.2f} cada.")
+else:
+    print("\nInsira uma forma de pagamento\033[31m VÁLIDA \033[m")
+    print(f"Sua compra de R${produto:.2f}, será paga no valor de R${produto:.2f}")
+print("\nBoas Compras!")
