@@ -1,0 +1,35 @@
+'''
+Faça um programa que leia o ano de nascimento de um jovem e informe, de acordo com a sua idade, 
+se ele ainda vai se alistar ao serviço militar, se é a hora exata de se alistar ou se já passou do tempo do alistamento. 
+Seu programa também deverá mostrar o tempo que falta ou que passou do prazo.
+'''
+
+from datetime import date
+
+nasci = int(input("Digite seu ano de nascimento: "))
+sexo = str(input("Você é Homem ou Mulher? ")).strip().upper()
+
+
+
+atual = date.today().year
+idade = atual - nasci
+
+if sexo == 'HOMEM':
+
+    if idade == 18:
+        print(f"Sua idade é de {idade} anos em {atual}. Você está no momento de se alistar")
+
+    elif idade < 18:
+        saldo = (nasci - atual) + 18
+        print(f"Sua idade é de {idade} anos em {atual}. Você ainda vai se alistar, faltam {saldo} ano(s) para você se alistar.")
+        ano = atual + saldo
+        print(f"Seu ano de alistamento será em {ano}")
+
+    elif idade > 18:
+        saldo = (atual - nasci) - 18 
+        print(f"Sua idade é de {idade} anos em {atual}. Você já passou do seu tempo de alistamento, passaram {saldo} ano(s) desde seu ano de alistamento.")
+        ano = atual - saldo
+        print(f"Seu ano de alistamento foi em {ano}")
+
+else:
+    print("Você não é obrigada a se alistar!")
