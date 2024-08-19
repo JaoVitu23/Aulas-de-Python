@@ -1,0 +1,66 @@
+'''
+Crie um programa que faça o computador jogar Jokenpô com você.
+'''
+
+from time import sleep
+
+print(f'{" Vamos jogar Jokenpo? ":-^50}')
+
+sleep(2)
+
+jogar = int(input("Quer jogar Jokenpo com o computador? \n"
+                  "Digite '1' para SIM. \n"
+                  "Digite '2' para NÃO. \n"
+                  "O que deseja? "))
+
+sleep(2)
+
+if jogar == 1:
+    print("\nQue ótimo! Vamos lá")
+    from random import randint
+    jogadas = ('Pedra', 'Papel', 'Tesoura')
+
+    print("Você possuí três opções de Jogadas: \n"
+          "Digite '0' para jogar PEDRA. \n"
+          "Digite '1' para jogar PAPEL. \n"
+          "Digite '2' para jogar TESOURA.")
+    
+    sleep(3)
+    player = int(input("O que você escolhe? "))
+
+    sleep(1)
+    
+    print("Calculando jogada do computador...")
+
+    jog_comp = randint(0,3)
+
+    sleep(1)
+
+      #Calculando a derrota do jogador
+
+    cores = {'limpar':"\033[m",
+             'Vermelho':"\033[31m",
+             'Verde':"\033[32m"}
+
+    if jog_comp == 0 and player == 2:
+         print(f"Você \033[31mPerdeu!\033[m O computador escolheu {jogadas[jog_comp]}.")
+      
+    elif jog_comp == 1 and player == 0:
+         print(f"Você \033[31mPerdeu!\033[m O computador escolheu {jogadas[jog_comp]}.")
+    
+    elif jog_comp == 2 and player == 1:
+         print(f"Você \033[31mPerdeu!\033[m O computador escolheu {jogadas[jog_comp]}.")
+    
+      #Calculando a vitória do jogador
+
+    elif player == 0 and jog_comp == 2:
+         print(f"Você \033[32mVenceu!\033[m O computador escolheu {jogadas[jog_comp]}.")
+
+    elif player == 1 and jog_comp == 0:
+         print(f"Você \033[32mVenceu!\033[m O computador escolheu {jogadas[jog_comp]}.")     
+
+    elif player == 2 and jog_comp == 1:
+         print(f"Você \033[32mVenceu!\033[m O computador escolheu {jogadas[jog_comp]}.")  
+
+else:
+     print("Que pena, eu queria jogar com você.")   
